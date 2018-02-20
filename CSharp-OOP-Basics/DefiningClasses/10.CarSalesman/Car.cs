@@ -21,15 +21,31 @@ public class Car
         var args = carLine.Split();
         Model = args[0];
         CarEngine = engines[args[1]];
-        if (args.Length > 2)
+        if (args.Length > 2 && args[2] != "")
         {
             if (Regex.Match(args[2], "^[0-9]+$").Success)
             {
-
+                Weight = args[2];
+            }
+            else
+            {
+                Color = args[2];
             }
         }
-        Weight = args.Length > 2 && args[2] != "" ? args[2] : "n/a";
-        Color = args.Length > 3 && args[3] != "" ? args[3] : "n/a";
+
+        if (args.Length > 3 && args[3] != "")
+        {
+            if (Regex.Match(args[3], "^[0-9]+$").Success)
+            {
+                Weight = args[3];
+            }
+            else
+            {
+                Color = args[3];
+            }
+        }
+        //Weight = args.Length > 2 && args[2] != "" ? args[2] : "n/a";
+        //Color = args.Length > 3 && args[3] != "" ? args[3] : "n/a";
         
     }
 
