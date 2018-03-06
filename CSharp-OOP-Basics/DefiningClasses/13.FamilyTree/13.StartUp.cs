@@ -35,7 +35,7 @@ class Program
             {
                 var splitInput = input.Split();
                 var person = new Person(splitInput[0] + " " + splitInput[1], splitInput[2]);                
-                UpdatePerson(person, ref people);
+                UpdatePerson(person, people);
             }
             else
             {
@@ -77,7 +77,7 @@ class Program
         }
     }
 
-    public static void UpdatePerson(Person person, ref List<Person> people)
+    public static void UpdatePerson(Person person, List<Person> people)
     {
         var foundPeople = people.Where(x => x.Name == person.Name || x.BirthDay == person.BirthDay).ToList();
         if (foundPeople.Count == 0)
@@ -85,12 +85,21 @@ class Program
             people.Add(person);
             return;
         }
-        foreach (var foundPerson in foundPeople)
+
+        foundPeople[0].Update(person);
+
+        if (foundPeople.Count == 2)
         {
-            person.Update(foundPerson);
+            foundPeople[0].Update(foundPeople[1]);
+            foundPeople[1].Update(foundPeople[0]);
+            people.Remove(foundPeople[1]);
         }
-        people = people.Where(x => x.Name != person.Name && x.BirthDay != person.BirthDay).ToList();
-        people.Add(person);
+        //foreach (var foundPerson in foundPeople)
+        //{
+        //    person.Update(foundPerson);
+        //}
+        //people = people.Where(x => x.Name != person.Name && x.BirthDay != person.BirthDay).ToList();
+        //people.Add(person);
     }
 
     public static int FindPersonId(Person person, List<Person> people)

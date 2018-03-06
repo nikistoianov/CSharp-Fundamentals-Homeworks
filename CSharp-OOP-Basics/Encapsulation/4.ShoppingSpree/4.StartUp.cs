@@ -30,7 +30,10 @@ class Program
                 var cmdSplit = command.Split();
                 var person = people.FirstOrDefault(x => x.Name == cmdSplit[0]);
                 var product = products.FirstOrDefault(x => x.Name == cmdSplit[1]);
-                Console.WriteLine(person.BuyProduct(product));
+                if (person != null && product != null)
+                {
+                    Console.WriteLine(person.BuyProduct(product));
+                }
             }
 
             foreach (var person in people)

@@ -10,8 +10,6 @@ public class Employee
     public string Department { get; set; }
     public string Email { get; set; }
     public int Age { get; set; }
-
-
     
     public Employee(string name, double salary, string position, string department)
     {
@@ -27,13 +25,14 @@ public class Employee
     {
         if (employeeArgs.Length > 4)
         {
-            if (employeeArgs[4].Contains("@"))
+            int age;
+            if (int.TryParse(employeeArgs[4], out age))
             {
-                Email = employeeArgs[4];
+                Age = age;
             }
             else
             {
-                Age = int.Parse(employeeArgs[4]);
+                Email = employeeArgs[4];
             }
         }
             
