@@ -40,7 +40,7 @@ public class Trainer
             {
                 pokemon.Health -= 10;
             }
-            Pokemons = Pokemons.Where(x => x.Health >= 0).ToList();
+            Pokemons = Pokemons.Where(x => x.Health > 0).ToList();
         }
     }
 

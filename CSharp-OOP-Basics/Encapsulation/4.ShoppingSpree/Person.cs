@@ -10,10 +10,10 @@ public class Person
 
     public string Name
     {
-        get { return name; }
+        get => name; 
         private set
         {
-            if (value == null || value.Trim() == "")
+            if (string.IsNullOrWhiteSpace(value))
             {
                 throw new ArgumentException("Name cannot be empty");
             }
@@ -55,7 +55,7 @@ public class Person
 
     public Person(string[] args) : this(args[0], double.Parse(args[1])) { }
 
-    public Person(string personInput) : this(personInput.Split('=')) { }
+    public Person(string personInput) : this(personInput.Split(new string[] { "=" }, StringSplitOptions.RemoveEmptyEntries)) { }
 
     public override string ToString()
     {

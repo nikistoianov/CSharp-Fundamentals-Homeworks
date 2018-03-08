@@ -9,10 +9,10 @@ public class Product
 
     public string Name
     {
-        get { return name; }
+        get => name;
         private set
         {
-            if (value == null || value.Trim() == "")
+            if (string.IsNullOrWhiteSpace(value))
             {
                 throw new ArgumentException("Name cannot be empty");
             }
@@ -41,7 +41,7 @@ public class Product
 
     public Product(string[] args) : this(args[0], double.Parse(args[1])) { }
 
-    public Product(string productInput) : this(productInput.Split('=')) { }
+    public Product(string productInput) : this(productInput.Split(new string[] { "=" }, StringSplitOptions.RemoveEmptyEntries)) { }
 
     public override string ToString()
     {
