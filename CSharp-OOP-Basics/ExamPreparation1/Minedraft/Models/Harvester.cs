@@ -16,7 +16,7 @@ public class Harvester
         {
             if (value < 0)
             {
-                throw new ArgumentException("oreOutput cannot be negative!");
+                throw new ArgumentException("OreOutput");
             }
             oreOutput = value;
         }
@@ -31,7 +31,7 @@ public class Harvester
         {
             if (value < 0 || value > 20000)
             {
-                throw new ArgumentException("invalid energyRequirement!");
+                throw new ArgumentException("EnergyRequirement");
             }
             energyRequirement = value;
         }

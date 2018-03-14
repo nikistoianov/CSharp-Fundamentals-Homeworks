@@ -15,7 +15,7 @@ public class Provider
         {
             if (value < 0 || value >= 10000)
             {
-                throw new ArgumentException("invalid energyOutput!");
+                throw new ArgumentException("EnergyOutput");
             }
             energyOutput = value;
         }
