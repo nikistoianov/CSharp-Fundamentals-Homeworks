@@ -36,39 +36,47 @@
         // TODO: refactor for Problem 4
         private string InterpredCommand(string[] data, string commandName)
         {
-            string result = string.Empty;
-            switch (commandName)
-            {
-                case "add":
-                    result = this.AddUnitCommand(data);
-                    break;
-                case "report":
-                    result = this.ReportCommand(data);
-                    break;
-                case "fight":
-                    Environment.Exit(0);
-                    break;
-                default:
-                    throw new InvalidOperationException("Invalid command!");
-            }
-            return result;
+            if (commandName == "fight")
+                Environment.Exit(0);
+
+            string asTitleCase = System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.ToTitleCase(commandName.ToLower());
+            var type = Type.GetType("_03BarracksFactory.Core.Commands." + asTitleCase);
+            var command = (IExecutable)Activator.CreateInstance(type, data, repository, unitFactory);
+            return command.Execute();
+
+            //string result = string.Empty;
+            //switch (commandName)
+            //{
+            //    case "add":
+            //        result = this.AddUnitCommand(data);
+            //        break;
+            //    case "report":
+            //        result = this.ReportCommand(data);
+            //        break;
+            //    case "fight":
+            //        Environment.Exit(0);
+            //        break;
+            //    default:
+            //        throw new InvalidOperationException("Invalid command!");
+            //}
+            //return result;
         }
 
 
-        private string ReportCommand(string[] data)
-        {
-            string output = this.repository.Statistics;
-            return output;
-        }
+        //private string ReportCommand(string[] data)
+        //{
+        //    string output = this.repository.Statistics;
+        //    return output;
+        //}
 
 
-        private string AddUnitCommand(string[] data)
-        {
-            string unitType = data[1];
-            IUnit unitToAdd = this.unitFactory.CreateUnit(unitType);
-            this.repository.AddUnit(unitToAdd);
-            string output = unitType + " added!";
-            return output;
-        }
+        //private string AddUnitCommand(string[] data)
+        //{
+        //    string unitType = data[1];
+        //    IUnit unitToAdd = this.unitFactory.CreateUnit(unitType);
+        //    this.repository.AddUnit(unitToAdd);
+        //    string output = unitType + " added!";
+        //    return output;
+        //}
     }
 }
