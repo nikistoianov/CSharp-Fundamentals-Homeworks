@@ -6,6 +6,6 @@ namespace _4.WorkForce.Models
 {
     public class StandardEmployee : Employee
     {
-        public StandardEmployee(string name) : base(name, 40) { }
+        public StandardEmployee(string name) : base(name, workHoursPerWeek: 40) { }
     }
 }
