@@ -2,7 +2,7 @@
 
 namespace Last_Army.IO
 {
-    class ConsoleWriter
+    public class ConsoleWriter
     {
         public static void WriteLine(string output)
         {

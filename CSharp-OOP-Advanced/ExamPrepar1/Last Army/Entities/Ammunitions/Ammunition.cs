@@ -8,7 +8,7 @@ public abstract class Ammunition : IAmmunition
 {
     public string Name { get; private set; }
     public double Weight { get; private set; }
-    public double WearLevel { get; }
+    public double WearLevel { get; private set; }
     public void DecreaseWearLevel(double wearAmount)
     {
         throw new NotImplementedException();
@@ -18,5 +18,6 @@ public abstract class Ammunition : IAmmunition
     {
         this.Weight = weight;
         this.Name = name;
+        this.WearLevel = weight * 100;
     }
 }
