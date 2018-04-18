@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Last_Army.Factory;
 
 public class GameController
 {

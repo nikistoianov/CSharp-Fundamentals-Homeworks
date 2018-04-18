@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Constants\OutputMessages.cs" />
     <Compile Include="Core\AmmunitionsController.cs" />
+    <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\GameController.cs" />
     <Compile Include="Core\MissionController.cs" />
     <Compile Include="Core\Output.cs" />
