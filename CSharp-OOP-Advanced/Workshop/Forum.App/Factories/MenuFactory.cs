@@ -17,7 +17,7 @@
         public IMenu CreateMenu(string menuName)
         {
             Assembly assembly = Assembly.GetExecutingAssembly();
-            Type menuType = assembly.GetTypes().FirstOrDefault(x => x.Name == menuName + "Menu");
+            Type menuType = assembly.GetTypes().FirstOrDefault(x => x.Name == menuName);
 
             if (menuType == null)
             {
